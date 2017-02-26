@@ -58,6 +58,7 @@ public class FirstFragment extends Fragment {
                 PeopleLab.get(getContext()).addPeople(mPeople);
 
                 updateUI();
+                mAdapter.notifyDataSetChanged();
 
                 Toast.makeText(getActivity(), "People has been added to the list", Toast.LENGTH_SHORT).show();
             }
@@ -76,7 +77,8 @@ public class FirstFragment extends Fragment {
             mAdapter = new PeopleAdapter(peoples);
             mRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyDataSetChanged();
+            mAdapter.changeDataSet(peoples);
         }
     }
 
@@ -132,6 +134,12 @@ public class FirstFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mPeoples.size();
+        }
+
+        //stack-rol
+        public void changeDataSet(List<People> peoples) {
+            this.mPeoples = peoples;
+            notifyDataSetChanged();
         }
     }
 
