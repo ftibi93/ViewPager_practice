@@ -58,7 +58,6 @@ public class FirstFragment extends Fragment {
                 PeopleLab.get(getContext()).addPeople(mPeople);
 
                 updateUI();
-                mAdapter.notifyDataSetChanged();
 
                 Toast.makeText(getActivity(), "People has been added to the list", Toast.LENGTH_SHORT).show();
             }
